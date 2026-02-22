@@ -2,6 +2,11 @@ import fitz
 import pytesseract
 from PIL import Image
 import io
+import pytesseract
+import os
+
+if os.path.exists("/usr/bin/tesseract"):
+    pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"
 
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 class PDFReader:
