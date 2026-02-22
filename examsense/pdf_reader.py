@@ -2,13 +2,12 @@ import fitz
 import pytesseract
 from PIL import Image
 import io
-import pytesseract
 import os
 
 if os.path.exists("/usr/bin/tesseract"):
     pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"
 
-pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+
 class PDFReader:
     def read_uploaded_files(self, uploaded_files):
         texts = []
@@ -23,11 +22,9 @@ class PDFReader:
             for page in doc:
                 extracted = page.get_text().strip()
 
-                # If text exists, use it
                 if extracted:
                     text += extracted + "\n"
                 else:
-                    # OCR fallback
                     text += self._ocr_page(page)
 
         return text
@@ -41,5 +38,5 @@ class PDFReader:
             ocr_text = pytesseract.image_to_string(image)
             return ocr_text + "\n"
 
-        except Exception as e:
+        except Exception:
             return "[OCR failed]\n"
