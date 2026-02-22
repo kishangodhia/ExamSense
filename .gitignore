@@ -1,6 +1,6 @@
-venv/
 .env
 __pycache__/
 *.pyc
-output/
-past_papers/*.pdf
+venv/
+.env.local
+.streamlit/secrets.toml
